@@ -19,13 +19,10 @@ class MoriComponent extends Component {
 // -----------------------------------------------------------------------------
 
 function clickPixel (rowIdx, colIdx) {
-  console.log(rowIdx, colIdx)
   const currentState = window.CURRENT_STATE
   const currentColor = mori.get(currentState, 'brushColor')
-  morilog(currentColor)
   const newState = mori.assocIn(currentState, ['board', rowIdx, colIdx], currentColor)
   window.NEXT_STATE = newState
-  morilog(newState)
 }
 
 class Pixel extends MoriComponent {
@@ -36,7 +33,7 @@ class Pixel extends MoriComponent {
     let className = 'square'
 
     const clickFn = mori.partial(clickPixel, rowIdx, colIdx)
-    function mouseEnter () {
+    function mouseEnter (evt) {
       // do nothing if the mouse is not pressed
       if (!window.IS_PRESSED_DOWN) return
       clickPixel(rowIdx, colIdx)
@@ -125,11 +122,19 @@ function App (props) {
   }
 
   const colorsVec = mori.get(props.imdata, 'colors')
+  function onMouseDown (evt) {
+    console.log(evt.nativeEvent)
+    window.IS_PRESSED_DOWN = true
+  }
+  function onMouseUp (evt) {
+    console.log(evt.nativeEvent)
+    window.IS_PRESSED_DOWN = false
+  }
 
   return (
     <div className='app-container'>
-      <h1>Ashleigh's Paint App </h1>
-      <div className='board'>{rows}</div>
+      <h1>Ashleigh's Paint</h1>
+      <div className='board' onMouseDown={onMouseDown} onMouseUp={onMouseUp}>{rows}</div>
       <div className='colors-container'>
         <ColorPicker imdata={colorsVec} />
       </div>
