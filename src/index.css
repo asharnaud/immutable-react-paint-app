@@ -1,8 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  font-size: 20px;
+  font-family: 'Over the Rainbow', cursive;
+  font-size: 26px;
+  background-color: #a3c8d8;
 }
 
 .app-container {
@@ -18,9 +19,10 @@ button {
 }
 
 .board {
-  border: 1px solid black;
   margin: 0;
-  padding: 0;
+  margin-right: 20%;
+  float: right;
+  padding: 2px;
 }
 
 .row {
@@ -66,7 +68,7 @@ button {
 
 .black {
   padding: 0px;
-  margin: 5px 2px;
+  margin: 1px;
   width: 50px;
   height: 50px;
   background-color: black;
@@ -75,7 +77,7 @@ button {
 
 .red {
   padding: 0px;
-  margin: 5px 2px;
+  margin: 1px;
   width: 50px;
   height: 50px;
   background-color: red;
@@ -84,7 +86,7 @@ button {
 
 .yellow {
   padding: 0px;
-  margin: 5px 2px;
+  margin: 1px;
   width: 50px;
   height: 50px;
   background-color: yellow;
@@ -93,7 +95,7 @@ button {
 
 .purple {
   padding: 0px;
-  margin: 5px 2px;
+  margin: 1px;
   width: 50px;
   height: 50px;
   background-color: purple;
@@ -102,7 +104,7 @@ button {
 
 .blue {
   padding: 0px;
-  margin: 5px 2px;
+  margin: 1px;
   width: 50px;
   height: 50px;
   background-color: blue;
@@ -111,9 +113,21 @@ button {
 
 .green {
   padding: 0px;
-  margin: 5px 2px;
+  margin: 1px;
   width: 50px;
   height: 50px;
   background-color: green;
   color: black;
+}
+
+.colors-container {
+  position: relative;
+  width: 10%;
+  margin-left: 15%;
+  margin-top: 5%;
+}
+
+.colors {
+  display: flex;
+  flex-direction: column;
 }

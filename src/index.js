@@ -29,7 +29,7 @@ const colors = mori.vector('black', 'red', 'yellow', 'purple', 'blue', 'green')
 const initialState = {
   board: window.EMPTY_BOARD,
   colors: colors,
-  brushColor: mori.first(colors)
+  brushColor: mori.first(colors),
 }
 
 // CURRENT_STATE is always the current state of the application
@@ -38,6 +38,7 @@ window.CURRENT_STATE = null
 // NEXT_STATE is the next state the application should be in
 // Start it off with a PDS version of our initialState object.
 window.NEXT_STATE = mori.toClj(initialState)
+window.IS_PRESSED_DOWN = false
 
 let renderCount = 0
 
@@ -84,4 +85,27 @@ function isValidState (state) {
   return mori.isMap(state) &&
          mori.isVector(mori.get(state, 'board'))
          // TODO: add more conditions here as appropriate
+}
+
+// -----------------------------------------------------------------------------
+// Native Events
+// -----------------------------------------------------------------------------
+
+// NOTE: these events do not participate in React.js synthetic event system
+
+function addEvents () {
+  document.body.addEventListener('mousedown', onMouseDown)
+  document.body.addEventListener('mouseup', onMouseUp)
+}
+
+addEvents()
+
+function onMouseDown (evt) {
+  window.IS_PRESSED_DOWN = true
+  console.log('MOUSE DOWN' + window.IS_PRESSED_DOWN)
+}
+
+function onMouseUp (evt) {
+  window.IS_PRESSED_DOWN = false
+  console.log('MOUSE UP' + window.IS_PRESSED_DOWN)
 }

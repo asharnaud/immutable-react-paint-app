@@ -15,14 +15,17 @@ class MoriComponent extends Component {
 }
 
 // -----------------------------------------------------------------------------
-// Square
+// Pixel
 // -----------------------------------------------------------------------------
 
-function clickSquare (rowIdx, colIdx) {
+function clickPixel (rowIdx, colIdx) {
+  console.log(rowIdx, colIdx)
   const currentState = window.CURRENT_STATE
   const currentColor = mori.get(currentState, 'brushColor')
+  morilog(currentColor)
   const newState = mori.assocIn(currentState, ['board', rowIdx, colIdx], currentColor)
   window.NEXT_STATE = newState
+  morilog(newState)
 }
 
 class Pixel extends MoriComponent {
@@ -32,14 +35,19 @@ class Pixel extends MoriComponent {
     const colIdx = mori.get(this.props.imdata, 'colIdx')
     let className = 'square'
 
-    const clickFn = mori.partial(clickSquare, rowIdx, colIdx)
+    const clickFn = mori.partial(clickPixel, rowIdx, colIdx)
+    function mouseEnter () {
+      // do nothing if the mouse is not pressed
+      if (!window.IS_PRESSED_DOWN) return
+      clickPixel(rowIdx, colIdx)
+    }
 
     const pixelStyle = {
       backgroundColor: color
     }
 
     return (
-      <div className={className} onClick={clickFn} style={pixelStyle} />
+      <div className={className} onClick={clickFn} onMouseEnter={mouseEnter} style={pixelStyle} />
     )
   }
 }
@@ -50,7 +58,6 @@ class Pixel extends MoriComponent {
 
 class Row extends MoriComponent {
   render () {
-    // const board = mori.get(this.props.imdata, 'board')
     const colVec = mori.get(this.props.imdata, 'cols')
     const numCols = mori.count(colVec)
     const rowIdx = mori.get(this.props.imdata, 'rowIdx')
@@ -89,8 +96,6 @@ class ColorPicker extends MoriComponent {
     const colorsVec = this.props.imdata
     const numColors = mori.count(colorsVec)
 
-    // morilog(colorsVec)
-
     let colorButtons = []
     for (let i = 0; i < numColors; i++) {
       let color = mori.get(colorsVec, i)
@@ -109,7 +114,6 @@ function clickResetBtn () {
 function App (props) {
   const boardVec = mori.get(props.imdata, 'board')
   const numRows = mori.count(boardVec)
-  const colorBrush = mori.get(props.imdata, 'brushColor')
 
   let rows = []
   for (let rowIdx = 0; rowIdx < numRows; rowIdx++) {
@@ -124,7 +128,7 @@ function App (props) {
 
   return (
     <div className='app-container'>
-      <h1>Ashleigh's Paint</h1>
+      <h1>Ashleigh's Paint App </h1>
       <div className='board'>{rows}</div>
       <div className='colors-container'>
         <ColorPicker imdata={colorsVec} />
