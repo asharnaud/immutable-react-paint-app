@@ -3,7 +3,19 @@ body {
   padding: 0;
   font-family: sans-serif;
   font-size: 20px;
-  background-color: #a3c8d8;
+}
+
+.header {
+  background-color: black;
+  color: white;
+  font-family: Chalkduster, fantasy;
+  font-size: 20px;
+  font-weight: 200;
+  height: 10vh;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
 .app-container {
@@ -19,10 +31,11 @@ button {
 }
 
 .board {
-  margin: 0;
-  margin-right: 20%;
+  margin-top: 2%;
+  margin-right: 17%;
   float: right;
   padding: 2px;
+  border: 5px solid black;
 }
 
 .row {
@@ -130,4 +143,40 @@ button {
 .colors {
   display: flex;
   flex-direction: column;
+}
+
+.undo-btn {
+  align-self: center;
+  background-color: black;
+  border-radius: 0.6em;
+  color: white;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  font-weight: 700;
+  line-height: 1;
+  margin-left: 10%;
+  margin-bottom: 0px;
+  padding: 1.2em 2.8em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.reset-btn {
+  align-self: center;
+  background-color: black;
+  border-radius: 0.6em;
+  color: white;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  font-weight: 700;
+  line-height: 1;
+  margin-left: 5.5%;
+  margin-bottom: 0px;
+  padding: 1.2em 2.8em;
+  text-align: center;
+  text-decoration: none;
 }

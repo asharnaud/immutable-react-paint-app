@@ -24,12 +24,12 @@ function createEmptyBoard () {
 }
 
 window.EMPTY_BOARD = mori.toClj(createEmptyBoard())
-const colors = mori.vector('black', 'red', 'yellow', 'purple', 'blue', 'green')
+window.COLORS = mori.vector('black', 'red', 'yellow', 'purple', 'blue', 'green')
 
 const initialState = {
   board: window.EMPTY_BOARD,
-  colors: colors,
-  brushColor: mori.first(colors)
+  colors: window.COLORS,
+  brushColor: mori.first(window.COLORS)
 }
 
 // CURRENT_STATE is always the current state of the application
@@ -86,22 +86,3 @@ function isValidState (state) {
          mori.isVector(mori.get(state, 'board'))
          // TODO: add more conditions here as appropriate
 }
-
-// // NOTE: these events do not participate in React.js synthetic event system
-//
-// function addEvents () {
-//   document.body.addEventListener('mousedown', onMouseDown)
-//   document.body.addEventListener('mouseup', onMouseUp)
-// }
-//
-// addEvents()
-//
-// function onMouseDown (evt) {
-//   window.IS_PRESSED_DOWN = true
-//   console.log('MOUSE DOWN' + window.IS_PRESSED_DOWN)
-// }
-//
-// function onMouseUp (evt) {
-//   window.IS_PRESSED_DOWN = false
-//   console.log('MOUSE UP' + window.IS_PRESSED_DOWN)
-// }

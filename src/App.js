@@ -105,7 +105,7 @@ class ColorPicker extends MoriComponent {
 }
 
 function clickResetBtn () {
-  window.NEXT_STATE = mori.hashMap('board', window.EMPTY_BOARD)
+  window.NEXT_STATE = mori.hashMap('board', window.EMPTY_BOARD, 'colors', window.COLORS)
 }
 
 function App (props) {
@@ -133,12 +133,13 @@ function App (props) {
 
   return (
     <div className='app-container'>
-      <h1>Ashleigh's Paint</h1>
+      <div className='header'><h1>Ashleigh's Paint App</h1></div>
       <div className='board' onMouseDown={onMouseDown} onMouseUp={onMouseUp}>{rows}</div>
       <div className='colors-container'>
         <ColorPicker imdata={colorsVec} />
       </div>
-      <button onClick={clickResetBtn}>Undo</button>
+      <button className='undo-btn'>UNDO</button>
+      <button className='reset-btn' onClick={clickResetBtn}>RESET BOARD</button>
     </div>
   )
 }
