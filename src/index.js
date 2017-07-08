@@ -8,7 +8,7 @@ import './index.css'
 // -----------------------------------------------------------------------------
 
 const numRows = 50
-const numCols = 80
+const numCols = 50
 
 function createEmptyBoard () {
   var board = []

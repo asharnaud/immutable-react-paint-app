@@ -1,8 +1,8 @@
 body {
-  margin: 0;
-  padding: 0;
   font-family: sans-serif;
   font-size: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
@@ -19,8 +19,15 @@ body {
 }
 
 .app-container {
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   text-align: center;
+}
+
+.inner-container {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 button {
@@ -31,29 +38,24 @@ button {
 }
 
 .board {
-  margin-top: 2%;
-  margin-right: 13%;
-  float: right;
-  padding: 2px;
   border: 5px solid black;
+  display: flex;
+  flex: 2;
+  float: right;
+  height: 68vh;
+  margin-right: 20px;
+  overflow: hidden;
 }
 
 .row {
-  line-height: 0;
-  margin: 0;
-  padding: 0;
+  width: 2%;
 }
 
 .square {
   background: #fff;
-  display: inline-block;
-  height: 12px;
-  width: 12px;
+  height: 3%;
+  width: 96%;
 }
-
-/*.square.on {
-  background: white;
-}*/
 
 .square.red {
   background: red;
@@ -80,87 +82,67 @@ button {
 }
 
 .black {
-  padding: 0px;
-  margin: 1px;
-  width: 50px;
-  height: 50px;
   background-color: black;
   color: white;
+  height: 50px;
+  margin: 1px;
+  padding: 0px;
+  width: 50px;
 }
 
 .red {
-  padding: 0px;
-  margin: 1px;
-  width: 50px;
-  height: 50px;
   background-color: red;
   color: white;
+  height: 50px;
+  margin: 1px;
+  padding: 0px;
+  width: 50px;
 }
 
 .yellow {
-  padding: 0px;
-  margin: 1px;
-  width: 50px;
-  height: 50px;
   background-color: yellow;
   color: black;
+  height: 50px;
+  margin: 1px;
+  padding: 0px;
+  width: 50px;
 }
 
 .purple {
-  padding: 0px;
-  margin: 1px;
-  width: 50px;
-  height: 50px;
   background-color: purple;
   color: black;
+  height: 50px;
+  margin: 1px;
+  padding: 0px;
+  width: 50px;
 }
 
 .blue {
-  padding: 0px;
-  margin: 1px;
-  width: 50px;
-  height: 50px;
   background-color: blue;
   color: black;
+  height: 50px;
+  margin: 1px;
+  padding: 0px;
+  width: 50px;
 }
 
 .green {
-  padding: 0px;
-  margin: 1px;
-  width: 50px;
-  height: 50px;
   background-color: green;
   color: black;
+  height: 50px;
+  margin: 1px;
+  padding: 0px;
+  width: 50px;
 }
 
 .colors-container {
-  position: relative;
-  width: 10%;
-  margin-left: 6.5%;
-  margin-top: 5%;
+  display: flex;
+  flex: .1;
 }
 
 .colors {
   display: flex;
   flex-direction: column;
-}
-
-.undo-btn {
-  align-self: center;
-  background-color: black;
-  border-radius: 0.6em;
-  color: white;
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  font-weight: 700;
-  line-height: 1;
-  margin-left: 3.5%;
-  margin-bottom: 0px;
-  padding: 1.2em 2.8em;
-  text-align: center;
-  text-decoration: none;
 }
 
 .reset-btn {
@@ -174,8 +156,7 @@ button {
   font-weight: 400;
   font-weight: 700;
   line-height: 1;
-  margin-left: 0;
-  margin-bottom: 0px;
+  margin-top: 10px;
   padding: 1.2em 2.8em;
   text-align: center;
   text-decoration: none;
